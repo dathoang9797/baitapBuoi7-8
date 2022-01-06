@@ -52,13 +52,13 @@ const addNumberToArray = () => {
 };
 
 const sumPositiveNumberInArray = () => {
-  if (!arrNumber.length) {
-    Swal.fire({
-      icon: 'error',
-      title: "Don't have array number to sum",
-    });
-    return '';
-  }
+  // if (!arrNumber.length) {
+  //   Swal.fire({
+  //     icon: 'error',
+  //     title: "Don't have array number to sum",
+  //   });
+  //   return '';
+  // }
   let sum = 0;
   arrNumber.forEach((number) => {
     if (number > 0) {
