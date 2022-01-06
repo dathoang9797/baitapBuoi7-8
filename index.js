@@ -25,8 +25,16 @@ const checkPrime = (n) => {
 const addNumberToArray = () => {
   const number = +inputEl.value;
 
+  if (!inputEl.value.length) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Number is not valid',
+    });
+    return;
+  }
+
   if (number === 0) {
-    arrNumber.push(+number);
+    arrNumber.push(number);
     showArrayNumberToText(arrNumber);
     return;
   }
@@ -39,11 +47,18 @@ const addNumberToArray = () => {
     return;
   }
 
-  arrNumber.push(+number);
+  arrNumber.push(number);
   showArrayNumberToText(arrNumber);
 };
 
 const sumPositiveNumberInArray = () => {
+  if (!arrNumber.length) {
+    Swal.fire({
+      icon: 'error',
+      title: "Don't have array number to sum",
+    });
+    return '';
+  }
   let sum = 0;
   arrNumber.forEach((number) => {
     if (number > 0) {
@@ -54,6 +69,13 @@ const sumPositiveNumberInArray = () => {
 };
 
 const countPositiveNumberInArray = () => {
+  if (!arrNumber.length) {
+    Swal.fire({
+      icon: 'error',
+      title: "Don't have array number to count",
+    });
+    return '';
+  }
   let count = 0;
   arrNumber.forEach((number) => {
     if (number > 0) {
