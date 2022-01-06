@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+    <title>Bai Tap Luyen Mang</title>
+  </head>
+  <body>
+    <main class="mt-5">
+      <div class="container wow fadeIn">
+        <h2 class="my-5 h2 text-center">Bai Tap Luyen Mang</h2>
+        <div class="row">
+          <div class="col-md-7 mb-4">
+            <div class="card">
+              <form class="card-body">
+                <div class="md-form input-group pl-0 mb-2">
+                  <input type="text" class="form-control py-0" id="soNguyen" placeholder="Please enter your number" />
+                </div>
+                <div class="md-form input-group pl-0 mb-2">
+                  <input type="text" class="form-control py-0" id="viTri1" placeholder="Vị trí " />
+                  <input type="text" class="form-control py-0" id="viTri2" placeholder="Vị trí " />
+                </div>
+
+                <div class="md-form input-group pl-0 mb-2">
+                  <div id="showArrayNumber" class="w-100"></div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <p class="m-0 text-left" style="line-height: normal">
+                      <button class="btn btn-primary btn-sm btn-block text-left mb-1" type="button" id="btnCauHoi" style="white-space: normal">1. Tổng các số dương trong mảng</button>
+                    </p>
+                    <p class="m-0" style="line-height: normal">
+                      <button class="btn btn-primary btn-sm btn-block text-left mb-1" type="button" id="btnCauHoi" style="white-space: normal">2. Đếm có bao nhiêu số dương trong mảng</button>
+                    </p>
+                    <p class="m-0" style="line-height: normal">
+                      <button class="btn btn-primary btn-sm btn-block text-left mb-1" type="button" id="btnCauHoi" style="white-space: normal">3. Tìm số nhỏ nhất trong mảng</button>
+                    </p>
+                    <p class="m-0" style="line-height: normal">
+                      <button class="btn btn-primary btn-sm btn-block text-left mb-1" type="button" id="btnCauHoi" style="white-space: normal">4. Tìm số dương nhỏ nhất trong mảng</button>
+                    </p>
+                    <p class="m-0" style="line-height: normal">
+                      <button class="btn btn-primary btn-sm btn-block text-left mb-1" type="button" id="btnCauHoi" style="white-space: normal">5. Tìm số chẵn cuối cùng trong mảng.Nếu không có trả về -1</button>
+                    </p>
+                    <p class="m-0" style="line-height: normal">
+                      <button class="btn btn-primary btn-sm btn-block text-left mb-1" type="button" id="btnCauHoi" style="white-space: normal">6. Đổi chỗ 2 giá trị trong mảng theo vị trí</button>
+                    </p>
+                    <p class="m-0" style="line-height: normal">
+                      <button class="btn btn-primary btn-sm btn-block text-left mb-1" type="button" id="btnCauHoi" style="white-space: normal">7. Sắp xếp mảng theo thứ tự tăng dần</button>
+                    </p>
+                    <p class="m-0" style="line-height: normal">
+                      <button class="btn btn-primary btn-sm btn-block text-left mb-1" type="button" id="btnCauHoi" style="white-space: normal">8. Tìm số nguyên tố đầu tiên trong mảng. Nếu không có trả về -1</button>
+                    </p>
+                    <p class="m-0" style="line-height: normal">
+                      <button class="btn btn-primary btn-sm btn-block text-left mb-1" type="button" id="btnCauHoi" style="white-space: normal">9 Nhập 1 mảng số thực, tìm xem mảng có bao nhiêu số nguyên</button>
+                    </p>
+                    <p class="m-0" style="line-height: normal">
+                      <button class="btn btn-primary btn-sm btn-block text-left mb-1" type="button" id="btnCauHoi" style="white-space: normal">10. So sánh số lượng số dương và số lượng số âm xem số nào nhiều hơn.</button>
+                    </p>
+                    <!-- <p class="m-0" style="line-height: normal">Chọn số từ 1 => 10 để thực thi câu lệnh tương ứng phía trên.</p> -->
+                  </div>
+                </div>
+                <hr class="mb-4" />
+                <div class="row">
+                  <div class="col-6"><button class="btn btn-primary btn-sm btn-block" id="btnAdd" style="white-space: normal">Add Number In Array</button></div>
+                  <div class="col-6"><button class="btn btn-primary btn-sm btn-block" id="clearAdd" style="white-space: normal">Clear Array Number</button></div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-md-5 mb-4">
+            <ul class="list-group z-depth-1">
+              <span id="outputCustomerCode"> </span>
+              <li class="list-group-item">
+                <p class="m-0"><span>Kết quả:</span> <b id="outputResult"></b></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
