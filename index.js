@@ -10,7 +10,7 @@ const btnCauHoi = document.querySelectorAll('#btnCauHoi');
 const arrNumber = [];
 
 const showArrayNumberToText = (arrNumber) => {
-  showArrayNumberEl.innerHTML = `<p class='text-center m-0'>${arrNumber.join(',')}</p>`;
+  showArrayNumberEl.innerHTML = `<p class='text-center m-0'>[${arrNumber.join(',')}]</p>`;
   inputEl.value = '';
 };
 
@@ -44,7 +44,7 @@ const sumPositiveNumberInArray = () => {
     alertError("Don't have array number to sum");
     return '';
   }
-  let sum = arrNumber.reduce((sum, number) => {
+  const sum = arrNumber.reduce((sum, number) => {
     if (number > 0) {
       return (sum += number);
     }
@@ -58,7 +58,7 @@ const countPositiveNumberInArray = () => {
     alertError("Don't have array number to count");
     return '';
   }
-  let count = arrNumber.reduce((count, number) => {
+  const count = arrNumber.reduce((count, number) => {
     if (number > 0) {
       return (count = ++count);
     }
@@ -99,59 +99,6 @@ const findLastEvenNumberInArray = () => {
   return -1;
 };
 
-const sortNumberArrayAsc = () => {
-  if (!arrNumber.length) {
-    alertError("Don't have array number to sort");
-    return '';
-  }
-  const sortArrayNumber = [...arrNumber].sort((a, b) => a - b);
-  return sortArrayNumber.join(',');
-};
-
-const findPrimeInNumberArray = () => {
-  if (!arrNumber.length) {
-    alertError("Don't have array number to find");
-    return '';
-  }
-  const firstNumberPrime = arrNumber.find((number) => Number.isInteger(number) && checkPrime(number));
-  if (!firstNumberPrime) return -1;
-  return firstNumberPrime;
-};
-
-const comparePositiveAndNegativeNumberArray = () => {
-  if (!arrNumber.length) {
-    alertError("Don't have array number to compare");
-    return '';
-  }
-  let countPositive = 0;
-  let countNegative = 0;
-  arrNumber.forEach((number) => {
-    switch (true) {
-      case number > 0:
-        countPositive++;
-        return;
-      case number < 0 && number !== 0:
-        countNegative++;
-        return;
-    }
-  });
-  return countPositive > countNegative ? 'Số dương nhiều hơn' : countPositive === countNegative ? 'Bằng nhau' : 'Số âm nhiều hơn';
-};
-
-const countIntegerInNumberArray = () => {
-  if (!arrNumber.length) {
-    alertError("Don't have array number to find");
-    return '';
-  }
-  let countInteger = arrNumber.reduce((countInteger, number) => {
-    if (Number.isInteger(number)) {
-      return (countInteger = ++countInteger);
-    }
-    return countInteger;
-  }, 0);
-  return `Có ${countInteger} số nguyên trong mảng`;
-};
-
 const convertPositionNumberInArray = (viTri1Val, viTri2Val) => {
   if (!arrNumber.length) {
     alertError("Don't have array number to convert");
@@ -174,11 +121,54 @@ const convertPositionNumberInArray = (viTri1Val, viTri2Val) => {
           temp = arrConvertPosition[indexVal1];
           arrConvertPosition[indexVal1] = arrConvertPosition[indexVal2];
           arrConvertPosition[indexVal2] = temp;
-          return arrConvertPosition;
+          return arrConvertPosition.join(',');
         }
       }
     }
   }
+};
+
+const sortNumberArrayAsc = () => {
+  if (!arrNumber.length) {
+    alertError("Don't have array number to sort");
+    return '';
+  }
+  const sortArrayNumber = [...arrNumber].sort((a, b) => a - b);
+  return sortArrayNumber.join(',');
+};
+
+const findPrimeInNumberArray = () => {
+  if (!arrNumber.length) {
+    alertError("Don't have array number to find");
+    return '';
+  }
+  const firstNumberPrime = arrNumber.find((number) => Number.isInteger(number) && checkPrime(number));
+  if (!firstNumberPrime) return -1;
+  return firstNumberPrime;
+};
+
+const countIntegerInNumberArray = () => {
+  if (!arrNumber.length) {
+    alertError("Don't have array number to find");
+    return '';
+  }
+  const countInteger = arrNumber.reduce((countInteger, number) => {
+    if (Number.isInteger(number)) {
+      return (countInteger = ++countInteger);
+    }
+    return countInteger;
+  }, 0);
+  return `Có ${countInteger} số nguyên trong mảng`;
+};
+
+const comparePositiveAndNegativeNumberArray = () => {
+  if (!arrNumber.length) {
+    alertError("Don't have array number to compare");
+    return '';
+  }
+  const countPositive = arrNumber.filter((number) => number > 0).length;
+  const countNegative = arrNumber.filter((number) => number < 0 && number !== 0).length;
+  return countPositive > countNegative ? 'Số dương nhiều hơn' : countPositive === countNegative ? 'Bằng nhau' : 'Số âm nhiều hơn';
 };
 
 btnCauHoi.forEach((itemCauHoi, index) => {
@@ -186,7 +176,6 @@ btnCauHoi.forEach((itemCauHoi, index) => {
     case 1:
       itemCauHoi.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log(e);
         outputEl.innerText = sumPositiveNumberInArray();
       });
       return;
@@ -219,7 +208,7 @@ btnCauHoi.forEach((itemCauHoi, index) => {
         e.preventDefault();
         const viTri1Val = +viTri1El.value;
         const viTri2Val = +viTri2El.value;
-        outputEl.innerText = convertPositionNumberInArray(viTri1Val, viTri2Val).join(',');
+        outputEl.innerText = convertPositionNumberInArray(viTri1Val, viTri2Val);
       });
       return;
     case 7:
