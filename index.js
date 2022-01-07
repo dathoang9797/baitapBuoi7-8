@@ -44,12 +44,12 @@ const sumPositiveNumberInArray = () => {
     alertError("Don't have array number to sum");
     return '';
   }
-  let sum = 0;
-  arrNumber.forEach((number) => {
+  let sum = arrNumber.reduce((sum, number) => {
     if (number > 0) {
-      sum += number;
+      return (sum += number);
     }
-  });
+    return sum;
+  }, 0);
   return sum;
 };
 
@@ -58,12 +58,12 @@ const countPositiveNumberInArray = () => {
     alertError("Don't have array number to count");
     return '';
   }
-  let count = 0;
-  arrNumber.forEach((number) => {
+  let count = arrNumber.reduce((count, number) => {
     if (number > 0) {
-      count++;
+      return (count = ++count);
     }
-  });
+    return count;
+  }, 0);
   return count;
 };
 
@@ -143,13 +143,12 @@ const countIntegerInNumberArray = () => {
     alertError("Don't have array number to find");
     return '';
   }
-  let countInteger = 0;
-  arrNumber.forEach((number) => {
+  let countInteger = arrNumber.reduce((countInteger, number) => {
     if (Number.isInteger(number)) {
-      countInteger++;
-      return;
+      return (countInteger = ++countInteger);
     }
-  });
+    return countInteger;
+  }, 0);
   return `Có ${countInteger} số nguyên trong mảng`;
 };
 
